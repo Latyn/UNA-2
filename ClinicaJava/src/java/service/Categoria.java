@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entities;
+package service;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,8 +42,8 @@ public class Categoria implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "descripcion")
     private String descripcion;
-    @ManyToMany(mappedBy = "categoriaList")
-    private List<Usuario> usuarioList;
+    @ManyToMany(mappedBy = "categoriaCollection")
+    private Collection<Usuario> usuarioCollection;
 
     public Categoria() {
     }
@@ -73,12 +73,12 @@ public class Categoria implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+    public Collection<Usuario> getUsuarioCollection() {
+        return usuarioCollection;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
+        this.usuarioCollection = usuarioCollection;
     }
 
     @Override
@@ -103,7 +103,7 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.Categoria[ codigo=" + codigo + " ]";
+        return "service.Categoria[ codigo=" + codigo + " ]";
     }
     
 }

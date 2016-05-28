@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entities;
+package service;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -77,18 +75,21 @@ public class Usuario implements Serializable {
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaNacimiento;
-    @JoinTable(name = "medico_paciente", joinColumns = {
-        @JoinColumn(name = "medico", referencedColumnName = "codigo")}, inverseJoinColumns = {
+    @JoinTable(name = "usuario_cita", joinColumns = {
+        @JoinColumn(name = "usuario", referencedColumnName = "codigo")}, inverseJoinColumns = {
         @JoinColumn(name = "cita", referencedColumnName = "codigo")})
     @ManyToMany
-    private List<Cita> citaList;
+    private Collection<Cita> citaCollection;
+    @JoinTable(name = "paciente_expediente", joinColumns = {
+        @JoinColumn(name = "usuario", referencedColumnName = "codigo")}, inverseJoinColumns = {
+        @JoinColumn(name = "expediente", referencedColumnName = "codigo")})
+    @ManyToMany
+    private Collection<Expediente> expedienteCollection;
     @JoinTable(name = "usuario_categoria", joinColumns = {
         @JoinColumn(name = "usuario", referencedColumnName = "codigo")}, inverseJoinColumns = {
         @JoinColumn(name = "categoria", referencedColumnName = "codigo")})
     @ManyToMany
-    private List<Categoria> categoriaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
-    private List<Cita> citaList1;
+    private Collection<Categoria> categoriaCollection;
 
     public Usuario() {
     }
@@ -162,28 +163,28 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public List<Cita> getCitaList() {
-        return citaList;
+    public Collection<Cita> getCitaCollection() {
+        return citaCollection;
     }
 
-    public void setCitaList(List<Cita> citaList) {
-        this.citaList = citaList;
+    public void setCitaCollection(Collection<Cita> citaCollection) {
+        this.citaCollection = citaCollection;
     }
 
-    public List<Categoria> getCategoriaList() {
-        return categoriaList;
+    public Collection<Expediente> getExpedienteCollection() {
+        return expedienteCollection;
     }
 
-    public void setCategoriaList(List<Categoria> categoriaList) {
-        this.categoriaList = categoriaList;
+    public void setExpedienteCollection(Collection<Expediente> expedienteCollection) {
+        this.expedienteCollection = expedienteCollection;
     }
 
-    public List<Cita> getCitaList1() {
-        return citaList1;
+    public Collection<Categoria> getCategoriaCollection() {
+        return categoriaCollection;
     }
 
-    public void setCitaList1(List<Cita> citaList1) {
-        this.citaList1 = citaList1;
+    public void setCategoriaCollection(Collection<Categoria> categoriaCollection) {
+        this.categoriaCollection = categoriaCollection;
     }
 
     @Override
@@ -208,7 +209,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.Usuario[ codigo=" + codigo + " ]";
+        return "service.Usuario[ codigo=" + codigo + " ]";
     }
     
 }

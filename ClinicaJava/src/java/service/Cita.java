@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entities;
+package service;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,15 +29,18 @@ import javax.validation.constraints.Size;
 @Table(name = "cita")
 @NamedQueries({
     @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c"),
-    @NamedQuery(name = "Cita.findByCodigo", query = "SELECT c FROM Cita c WHERE c.citaPK.codigo = :codigo"),
+    @NamedQuery(name = "Cita.findByCodigo", query = "SELECT c FROM Cita c WHERE c.codigo = :codigo"),
     @NamedQuery(name = "Cita.findByDescripcion", query = "SELECT c FROM Cita c WHERE c.descripcion = :descripcion"),
-    @NamedQuery(name = "Cita.findByFechaHora", query = "SELECT c FROM Cita c WHERE c.fechaHora = :fechaHora"),
-    @NamedQuery(name = "Cita.findByPaciente", query = "SELECT c FROM Cita c WHERE c.citaPK.paciente = :paciente")})
+    @NamedQuery(name = "Cita.findByFechaHora", query = "SELECT c FROM Cita c WHERE c.fechaHora = :fechaHora")})
 public class Cita implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected CitaPK citaPK;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "codigo")
+    private String codigo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -48,34 +49,27 @@ public class Cita implements Serializable {
     @Column(name = "fecha_hora")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHora;
-    @ManyToMany(mappedBy = "citaList")
-    private List<Usuario> usuarioList;
-    @JoinColumn(name = "paciente", referencedColumnName = "codigo", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Usuario usuario;
+    @ManyToMany(mappedBy = "citaCollection")
+    private Collection<Usuario> usuarioCollection;
 
     public Cita() {
     }
 
-    public Cita(CitaPK citaPK) {
-        this.citaPK = citaPK;
+    public Cita(String codigo) {
+        this.codigo = codigo;
     }
 
-    public Cita(CitaPK citaPK, String descripcion) {
-        this.citaPK = citaPK;
+    public Cita(String codigo, String descripcion) {
+        this.codigo = codigo;
         this.descripcion = descripcion;
     }
 
-    public Cita(String codigo, String paciente) {
-        this.citaPK = new CitaPK(codigo, paciente);
+    public String getCodigo() {
+        return codigo;
     }
 
-    public CitaPK getCitaPK() {
-        return citaPK;
-    }
-
-    public void setCitaPK(CitaPK citaPK) {
-        this.citaPK = citaPK;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescripcion() {
@@ -94,26 +88,18 @@ public class Cita implements Serializable {
         this.fechaHora = fechaHora;
     }
 
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
+    public Collection<Usuario> getUsuarioCollection() {
+        return usuarioCollection;
     }
 
-    public void setUsuarioList(List<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
+        this.usuarioCollection = usuarioCollection;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (citaPK != null ? citaPK.hashCode() : 0);
+        hash += (codigo != null ? codigo.hashCode() : 0);
         return hash;
     }
 
@@ -124,7 +110,7 @@ public class Cita implements Serializable {
             return false;
         }
         Cita other = (Cita) object;
-        if ((this.citaPK == null && other.citaPK != null) || (this.citaPK != null && !this.citaPK.equals(other.citaPK))) {
+        if ((this.codigo == null && other.codigo != null) || (this.codigo != null && !this.codigo.equals(other.codigo))) {
             return false;
         }
         return true;
@@ -132,7 +118,7 @@ public class Cita implements Serializable {
 
     @Override
     public String toString() {
-        return "Entities.Cita[ citaPK=" + citaPK + " ]";
+        return "service.Cita[ codigo=" + codigo + " ]";
     }
     
 }
