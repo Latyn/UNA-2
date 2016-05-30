@@ -12,4 +12,10 @@
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
         </jsp-property-group>
     </jsp-config>
+    <resource-ref>
+        <res-ref-name>jdbc/clinica</res-ref-name>
+        <res-type>javax.sql.ConnectionPoolDataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 </web-app>

@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
     Document   : Administradores
     Created on : May 28, 2016, 1:55:48 AM
@@ -26,6 +28,15 @@
                     <div class="panel-heading">Usuarios</div>
                     <div class="panel-body">
                         Panel content
+                        <sql:query var="result" dataSource="jdbc/clinica">
+                            SELECT *  FROM Usuario
+                        </sql:query>
+                            <c:forEach var="results" items="${result.rows}">
+                            <a href="#" id="${results.codigo}">
+                            <span class="categoryLabelText">${results.nombre}</span>
+                        </a>
+                        </c:forEach>   
+
                     </div>
                 </div>
             </div>
@@ -34,7 +45,7 @@
                     <div class="panel-heading">Detalles</div>
                     <div class="panel-body">
                         <div class="col-sm-12">
-                            Detalles
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12 MargingTop">
