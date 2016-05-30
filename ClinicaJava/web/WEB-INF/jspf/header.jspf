@@ -11,9 +11,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Ingreso</a></li>
-      <li><a href="#">Medicos</a></li>
-      <li><a href="#">Expediente</a></li> 
-      <li><a href="#">Administradores</a></li> 
+      <li><a href="/ClinicaJava/Medicos">Medicos</a></li>
+      <li><a href="/ClinicaJava/Expediente">Expediente</a></li> 
+      <li><a href="/ClinicaJava/Administradores">Administradores</a></li> 
     </ul>
   </div>
 </nav>
