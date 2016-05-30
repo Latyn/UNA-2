@@ -13,12 +13,41 @@
     </head>
     <body>
         <div class="row">
-            <div class="col-sm-6">
-                Section 1
+
+            <div class="col-sm-5 col-sm-offset-1">
+
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Buscar</button>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Criterio de busqueda...">
+                </div>
+                <div class="panel panel-success MargingTop">
+                    <div class="panel-heading">Citas Medicas</div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6">
-                Section 2
+            <div class="col-sm-5">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">Detalles</div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            Detalles
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 MargingTop">
+                                <a href="#" class="btn btn-success">Consultar Expediente</a>
+                                <a href="#" class="btn btn-success">Editar</a>
+                                <a href="#" class="btn btn-success">Salvar</a>
+                                <a href="#" class="btn btn-success">Agregar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
             </div>
         </div>
+
     </body>
 </html>

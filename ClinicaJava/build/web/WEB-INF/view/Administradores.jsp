@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Administrador</title>
     </head>
     <body>
         <div class="row">
@@ -37,7 +37,7 @@
                             Detalles
                         </div>
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 MargingTop">
                                 <a href="#" class="btn btn-success">Salvar</a>
                                 <a href="#" class="btn btn-success">Editar</a>
                                 <a href="#" class="btn btn-success">Agregar</a>
@@ -47,6 +47,5 @@
                 </div> 
             </div>
         </div>
-
     </body>
 </html>
