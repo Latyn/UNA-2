@@ -1,3 +1,21 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+
+<head>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Clinica UNA</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Ingreso</a></li>
+      <li><a href="#">Medicos</a></li>
+      <li><a href="#">Expediente</a></li> 
+      <li><a href="#">Administradores</a></li> 
+    </ul>
+  </div>
+</nav>
+<script src="resources/js/jquery-1.12.4.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>

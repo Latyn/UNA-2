@@ -123,7 +123,6 @@ public class ControllerServlet extends HttpServlet {
             ex.printStackTrace();
         }
     }
-    }
 
     /**
      * Returns a short description of the servlet.
