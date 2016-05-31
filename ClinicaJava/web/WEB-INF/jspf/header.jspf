@@ -3,6 +3,7 @@
 
 <head>
         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        
 </head>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -19,3 +20,4 @@
 </nav>
 <script src="resources/js/jquery-1.12.4.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/angular.min.js"></script>
