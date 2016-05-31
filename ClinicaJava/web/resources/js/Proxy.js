@@ -20,7 +20,7 @@ Proxy.UsuariosDelete = function(product,callBack){
 Proxy.usuariosListCategory = function(category,callBack){
     jsonText = category;
     var AJAX_req = new XMLHttpRequest();
-    url="/34-CarritoCompraAngular/ProductosServlet?action=productListCategory";
+    url="/ClinicaJava/ControllerServlet?action=productListCategory";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){

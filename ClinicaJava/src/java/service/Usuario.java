@@ -22,6 +22,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,7 +40,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo"),
     @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion"),
     @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento")})
-public class Usuario implements Serializable {
+@XmlRootElement
+public class Usuario implements Serializable, Jsonable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -163,6 +166,7 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    @XmlTransient
     public Collection<Cita> getCitaCollection() {
         return citaCollection;
     }
@@ -171,6 +175,7 @@ public class Usuario implements Serializable {
         this.citaCollection = citaCollection;
     }
 
+    @XmlTransient
     public Collection<Expediente> getExpedienteCollection() {
         return expedienteCollection;
     }
@@ -179,6 +184,7 @@ public class Usuario implements Serializable {
         this.expedienteCollection = expedienteCollection;
     }
 
+    @XmlTransient
     public Collection<Categoria> getCategoriaCollection() {
         return categoriaCollection;
     }

@@ -17,6 +17,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,6 +30,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
     @NamedQuery(name = "Categoria.findByCodigo", query = "SELECT c FROM Categoria c WHERE c.codigo = :codigo"),
     @NamedQuery(name = "Categoria.findByDescripcion", query = "SELECT c FROM Categoria c WHERE c.descripcion = :descripcion")})
+@XmlRootElement
 public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,6 +76,7 @@ public class Categoria implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }

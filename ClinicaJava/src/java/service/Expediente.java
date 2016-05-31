@@ -17,6 +17,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,6 +30,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Expediente.findAll", query = "SELECT e FROM Expediente e"),
     @NamedQuery(name = "Expediente.findByCodigo", query = "SELECT e FROM Expediente e WHERE e.codigo = :codigo"),
     @NamedQuery(name = "Expediente.findByDescripcion", query = "SELECT e FROM Expediente e WHERE e.descripcion = :descripcion")})
+@XmlRootElement
 public class Expediente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,6 +76,7 @@ public class Expediente implements Serializable {
         this.descripcion = descripcion;
     }
 
+    @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }

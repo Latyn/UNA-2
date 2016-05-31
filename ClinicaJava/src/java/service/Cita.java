@@ -20,6 +20,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,6 +34,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Cita.findByCodigo", query = "SELECT c FROM Cita c WHERE c.codigo = :codigo"),
     @NamedQuery(name = "Cita.findByDescripcion", query = "SELECT c FROM Cita c WHERE c.descripcion = :descripcion"),
     @NamedQuery(name = "Cita.findByFechaHora", query = "SELECT c FROM Cita c WHERE c.fechaHora = :fechaHora")})
+@XmlRootElement
 public class Cita implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -88,6 +91,7 @@ public class Cita implements Serializable {
         this.fechaHora = fechaHora;
     }
 
+    @XmlTransient
     public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }
