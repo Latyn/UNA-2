@@ -12,6 +12,8 @@ import service.Jsonable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,7 @@ import service.Model;
 //se adicionan los urls de las vistas
 @WebServlet(name = "ControllerServlet",
             loadOnStartup = 1, 
-            urlPatterns = {"/Medicos", "/Expediente","/Administradores","/ListarMedicos"})
+            urlPatterns = {"/ControllerServlet","/Medicos", "/Expediente","/Administradores","/ListarMedicos","/UsuarioListSearch"})
 public class ControllerServlet extends HttpServlet {
 
     /**
@@ -53,11 +55,19 @@ public class ControllerServlet extends HttpServlet {
             List<Usuario> usuarios;
             
             switch (accion) {
-                case "ProductListAll":
+                case "UsuarioListAll":
                     usuarios = Model.usuariosConsultarTodos();
                     json = gson.toJson(usuarios); 
                     out.write(json);
                     break;
+                case "UsuarioListSearch":
+                    System.out.println("Message");
+                    String criteria;
+                    criteria = request.getParameter("criteria");
+                    usuarios = Model.usuarioListSearch(criteria);
+                    json = gson.toJson(usuarios); 
+                    out.write(json);
+                break;
             }
         }
     }
@@ -106,7 +116,7 @@ public class ControllerServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -125,6 +135,12 @@ public class ControllerServlet extends HttpServlet {
             // TODO: Implement purchase action
 
             // userPath = "/confirmation";
+        }else if (userPath.equals("/ClinicaJava/ControllerServlet?action=UsuarioListSearch")){
+           try {
+               processRequest(request, response);
+           } catch (Exception ex) {
+               Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
 
         // use RequestDispatcher to forward request internally
@@ -134,6 +150,15 @@ public class ControllerServlet extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }*/
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

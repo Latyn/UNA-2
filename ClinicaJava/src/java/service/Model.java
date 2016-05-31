@@ -21,30 +21,47 @@ import Database.Database;
  * @author jsanchez
  */
 public class Model {
-    static Database db;
+    static Database usuarios;
     
     static {
-        initProductos();
+        initUsuarios();
     }
-    private static void initProductos(){
-       db= new Database(null, null, null);        
+    private static void initUsuarios(){
+       usuarios= new Database(null, null, null);        
     }
 
     public static List<Usuario> usuariosConsultarTodos() throws Exception{
-       List<Usuario> usuarios;
-       usuarios= new ArrayList();
+       List<Usuario> users;
+       users= new ArrayList();
         try {
             String sql="select * "+
-                    "from usuario  p  ";
-            ResultSet rs =  db.executeQuery(sql);
+                    "from usuario";
+            ResultSet rs =  usuarios.executeQuery(sql);
             while (rs.next()) {
-                usuarios.add(toUsuario(rs));
+                users.add(toUsuario(rs));
             }
         } catch (SQLException ex) {
         }
-       return usuarios;
+       return users;
    }
-
+   public static List<Usuario> usuarioListSearch(String criteria) throws Exception{
+       List<Usuario> users;
+       users= new ArrayList();
+        try {
+            String sql="select * from "+
+                       "usuario  p  "+
+                       "where p.codigo like '%%%s%%'";
+            
+            sql=String.format(sql,criteria);
+            
+            ResultSet rs =  usuarios.executeQuery(sql);
+            while (rs.next()) {
+                users.add(toUsuario(rs));
+            }
+        } catch (SQLException ex) {
+        }
+       return users;
+   }
    /*public static List<Producto> productListCategory(int category){
        List<Producto> prods;
        prods= new ArrayList();
@@ -53,24 +70,6 @@ public class Model {
                     "from producto  p inner join producto_categoria pc on pc.producto=p.codigo "+
                     "where pc.categoria = '%s'";
             sql=String.format(sql,category);
-            
-            ResultSet rs =  productos.executeQuery(sql);
-            while (rs.next()) {
-                prods.add(toProduct(rs));
-            }
-        } catch (SQLException ex) {
-        }
-       return prods;
-   }
-
-   public static List<Producto> ProductListSearch(String criteria){
-       List<Producto> prods;
-       prods= new ArrayList();
-        try {
-            String sql="select * from "+
-                    "producto  p  "+
-                    "where p.descripcion like '%%%s%%'";
-            sql=String.format(sql,criteria);
             
             ResultSet rs =  productos.executeQuery(sql);
             while (rs.next()) {

@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Administrador</title>
+        <%@ include file="Imports.jspf" %>
     </head>
     <body ng-app ng-controller="ManagerAdministradoresController">
         <div class="row">
@@ -32,7 +33,7 @@
                         <tbody>
                             <tr ng-repeat="object in list" ng-class="{'selectedRow':$index == selectedRow}" ng-click="setClickedRow($index);edit(object);" >
                                 <td>{{object.codigo}}</td>
-                                <td>{{object.categoria}}</td>
+                                <td>{{object.clave}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -68,7 +69,7 @@
             };
             
             $scope.search = function (e){
-                Proxy.ProductListSearch($scope.filter,
+                Proxy.usuariosListSearch($scope.filter,
                     function(result){
                         $scope.$apply(function(){
                             $scope.list=result;
@@ -78,7 +79,7 @@
             };
 
             $scope.new = function (e){
-                $scope.current = new Administrador("","","","");
+                $scope.current = new Usuario("","");
                 $scope.mode='add';
             };
         
@@ -89,7 +90,7 @@
 
             $scope.add = function (e){
                 if (!$scope.userForm.$valid){ alert("Error en Datos!"); return;};
-                Proxy.ProductAdd($scope.current,
+                Proxy.usuariosAdd()($scope.current,
                     function(status){
                         switch(status){
                             case 0: // ok
@@ -108,7 +109,7 @@
                 
             $scope.update = function (e){
                 if (!$scope.userForm.$valid){ alert("Error en Datos!"); return;};
-                Proxy.ProductUpdate($scope.current,
+                Proxy.usuariosUpdate()($scope.current,
                     function(status){
                         switch(status){
                             case 0: // ok
@@ -125,7 +126,7 @@
             };                    
 
             $scope.delete = function (e){
-                Proxy.ProductDelete($scope.current,
+                Proxy.usuariosDelete()($scope.current,
                     function(status){
                         switch(status){
                             case 0: // ok
@@ -145,7 +146,7 @@
     };
         
         function reset($scope){
-            $scope.current = new Administrador("","","","");
+            $scope.current = new Usuario("","");
             $scope.mode=null;
             $scope.selectedRow = null;            
         }

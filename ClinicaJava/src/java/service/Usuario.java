@@ -8,90 +8,23 @@ package service;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
  * @author Latyn
  */
-@Entity
-@Table(name = "usuario")
-@NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByCodigo", query = "SELECT u FROM Usuario u WHERE u.codigo = :codigo"),
-    @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
-    @NamedQuery(name = "Usuario.findByClave", query = "SELECT u FROM Usuario u WHERE u.clave = :clave"),
-    @NamedQuery(name = "Usuario.findByTelefono", query = "SELECT u FROM Usuario u WHERE u.telefono = :telefono"),
-    @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo"),
-    @NamedQuery(name = "Usuario.findByDireccion", query = "SELECT u FROM Usuario u WHERE u.direccion = :direccion"),
-    @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento")})
-@XmlRootElement
 public class Usuario implements Serializable, Jsonable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "codigo")
     private String codigo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "nombre")
     private String nombre;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "clave")
     private String clave;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "telefono")
     private String telefono;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "correo")
     private String correo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "direccion")
     private String direccion;
-    @Column(name = "fecha_nacimiento")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaNacimiento;
-    @JoinTable(name = "usuario_cita", joinColumns = {
-        @JoinColumn(name = "usuario", referencedColumnName = "codigo")}, inverseJoinColumns = {
-        @JoinColumn(name = "cita", referencedColumnName = "codigo")})
-    @ManyToMany
     private Collection<Cita> citaCollection;
-    @JoinTable(name = "paciente_expediente", joinColumns = {
-        @JoinColumn(name = "usuario", referencedColumnName = "codigo")}, inverseJoinColumns = {
-        @JoinColumn(name = "expediente", referencedColumnName = "codigo")})
-    @ManyToMany
     private Collection<Expediente> expedienteCollection;
-    @JoinTable(name = "usuario_categoria", joinColumns = {
-        @JoinColumn(name = "usuario", referencedColumnName = "codigo")}, inverseJoinColumns = {
-        @JoinColumn(name = "categoria", referencedColumnName = "codigo")})
-    @ManyToMany
     private Collection<Categoria> categoriaCollection;
 
     public Usuario() {
@@ -166,7 +99,7 @@ public class Usuario implements Serializable, Jsonable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    @XmlTransient
+
     public Collection<Cita> getCitaCollection() {
         return citaCollection;
     }
@@ -175,7 +108,7 @@ public class Usuario implements Serializable, Jsonable {
         this.citaCollection = citaCollection;
     }
 
-    @XmlTransient
+
     public Collection<Expediente> getExpedienteCollection() {
         return expedienteCollection;
     }
@@ -184,7 +117,7 @@ public class Usuario implements Serializable, Jsonable {
         this.expedienteCollection = expedienteCollection;
     }
 
-    @XmlTransient
+
     public Collection<Categoria> getCategoriaCollection() {
         return categoriaCollection;
     }

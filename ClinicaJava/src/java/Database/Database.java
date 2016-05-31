@@ -79,7 +79,7 @@ public class Database {
     private static final String MANEJADOR_DB = "com.mysql.jdbc.Driver";
     private static final String PROTOCOLO = "jdbc:mysql:";
     private static final String SERVIDOR = "localhost";
-    private static final String PUERTO = "3535";
+    private static final String PUERTO = "3306";
     private static final String USUARIO = "root";
     private static final String CLAVE = "Go0dGo0d";
     private static final String BASEDATOS = "clinica";
