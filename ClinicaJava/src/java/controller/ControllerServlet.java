@@ -61,7 +61,6 @@ public class ControllerServlet extends HttpServlet {
                     out.write(json);
                     break;
                 case "UsuarioListSearch":
-                    System.out.println("Message");
                     String criteria;
                     criteria = request.getParameter("criteria");
                     usuarios = Model.usuarioListSearch(criteria);

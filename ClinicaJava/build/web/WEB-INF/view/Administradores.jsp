@@ -29,7 +29,7 @@
                     <div class="panel-heading">Usuarios</div>
                     <div class="panel-body">
                     <table id ="UsuariosTable" class="GRID"> 
-                        <thead><tr><th>Nombre</th><th>Categoria</th></tr></thead>
+                        <thead><tr><th>Nombre</th><th>Categoria</th><th>Clave</th></tr></thead>
                         <tbody>
                             <tr ng-repeat="object in list" ng-class="{'selectedRow':$index == selectedRow}" ng-click="setClickedRow($index);edit(object);" >
                                 <td>{{object.codigo}}</td>
@@ -79,7 +79,7 @@
             };
 
             $scope.new = function (e){
-                $scope.current = new Usuario("","");
+                $scope.current = new Usuario("","","");
                 $scope.mode='add';
             };
         
@@ -146,7 +146,7 @@
     };
         
         function reset($scope){
-            $scope.current = new Usuario("","");
+            $scope.current = new Usuario("","","");
             $scope.mode=null;
             $scope.selectedRow = null;            
         }

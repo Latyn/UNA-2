@@ -48,8 +48,6 @@ public class Model {
        List<Usuario> users;
        users= new ArrayList();
         try {
-            String sql="select * from "+
-                       "usuario  p  "+
                        "where p.codigo like '%%%s%%'";
             
             sql=String.format(sql,criteria);
@@ -193,6 +191,7 @@ public static  List<Compra> compraConsultarTodos() throws Exception{
         Usuario obj= new Usuario();
         obj.setCodigo(rs.getString("codigo"));
         obj.setClave(rs.getString("clave"));
+        obj.setCodigoCategoria(rs.getString("categoria"));
         return obj;
     }
 /*
