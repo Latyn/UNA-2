@@ -1,15 +1,17 @@
-  function Usuario(codigo,clave,categoria) {
-    this.Usuario(codigo,clave,categoria);
+  function Usuario(codigo,clave,categoria,descripcion) {
+    this.Usuario(codigo,clave,categoria,descripcion);
   }
   
   Usuario.prototype={
   	codigo: "",
 	clave: "",
         categoria: "",
-	Usuario: function(codigo,clave,categoria){
+        descripcion:"",
+	Usuario: function(codigo,clave,categoria, descripcion){
 		this.codigo=codigo;
 		this.clave=clave;
                 this.categoria=categoria;
+                this.descripcion = descripcion;
 	},
 	toString:function(){
 	  return this.codigo;
@@ -17,7 +19,7 @@
   };
   
   Usuario.from= function(plain){
-    usuario = new Usuario(plain.codigo,plain.clave,plain.categoria);
+    usuario = new Usuario(plain.codigo,plain.clave,plain.categoria, plain.descripcion);
 	return usuario;
   };
   
@@ -26,7 +28,8 @@
         _class : 'Usuario',
         codigo : usuario.codigo,
         clave : usuario.clave,
-        categoria : usuario.categoria
+        categoria : usuario.categoria,
+        descripcion : usuario.descripcion
     };	
   };
  

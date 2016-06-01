@@ -193,6 +193,7 @@ public static  List<Compra> compraConsultarTodos() throws Exception{
         obj.setCodigo(rs.getString("codigo"));
         obj.setClave(rs.getString("clave"));
         obj.setCodigoCategoria(rs.getString("categoria"));
+        obj.setDescripcionCategoria(rs.getString("descripcion"));
         return obj;
     }
 /*
