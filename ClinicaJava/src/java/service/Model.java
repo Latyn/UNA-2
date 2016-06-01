@@ -48,6 +48,7 @@ public class Model {
        List<Usuario> users;
        users= new ArrayList();
         try {
+            String sql="select * from usuario p  inner join usuario_categoria pc on pc.usuario = p.codigo inner join categoria c on pc.categoria = c.codigo "+
                        "where p.codigo like '%%%s%%'";
             
             sql=String.format(sql,criteria);

@@ -23,9 +23,10 @@ public class Usuario implements Serializable, Jsonable {
     private String correo;
     private String direccion;
     private Date fechaNacimiento;
+    private String DescripcionCategoria;
+    private String categoria;
     private Collection<Cita> citaCollection;
     private Collection<Expediente> expedienteCollection;
-    private Collection<Categoria> categoriaCollection;
 
     public Usuario() {
     }
@@ -34,13 +35,23 @@ public class Usuario implements Serializable, Jsonable {
         this.codigo = codigo;
     }
 
-    public Usuario(String codigo, String nombre, String clave, String telefono, String correo, String direccion) {
+    public Usuario(String codigo, String nombre, String clave, String telefono, String correo, String direccion, String DescripcionCategoria, String categoria) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.clave = clave;
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
+        this.DescripcionCategoria = DescripcionCategoria;
+        this.categoria = categoria;
+    }
+    
+    public void setDescripcionCategoria(String DescripcionCategoria) {
+        this.DescripcionCategoria = DescripcionCategoria;
+    }
+    
+    public void setCodigoCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getCodigo() {
@@ -117,15 +128,6 @@ public class Usuario implements Serializable, Jsonable {
         this.expedienteCollection = expedienteCollection;
     }
 
-
-    public Collection<Categoria> getCategoriaCollection() {
-        return categoriaCollection;
-    }
-
-    public void setCategoriaCollection(Collection<Categoria> categoriaCollection) {
-        this.categoriaCollection = categoriaCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -133,7 +135,7 @@ public class Usuario implements Serializable, Jsonable {
         return hash;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Usuario)) {
@@ -144,7 +146,7 @@ public class Usuario implements Serializable, Jsonable {
             return false;
         }
         return true;
-    }
+    }*/
 
     @Override
     public String toString() {

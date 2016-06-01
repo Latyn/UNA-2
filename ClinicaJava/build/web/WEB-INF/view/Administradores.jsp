@@ -34,6 +34,7 @@
                             <tr ng-repeat="object in list" ng-class="{'selectedRow':$index == selectedRow}" ng-click="setClickedRow($index);edit(object);" >
                                 <td>{{object.codigo}}</td>
                                 <td>{{object.clave}}</td>
+                                <td>{{object.categoria}}</td>
                             </tr>
                         </tbody>
                     </table>
