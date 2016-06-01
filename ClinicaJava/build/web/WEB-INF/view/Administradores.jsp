@@ -45,13 +45,16 @@
                 <div class="panel panel-danger">
                     <div class="panel-heading">Detalles</div>
                     <div class="panel-body">
-                        <div class="col-sm-12">
-
+                        <div class="row">
+                             <div class="col-sm-12">
+                                 <label> Codigo :</label>
+                                 <input type="text" class="form-control" required ng-model="current.codigo" ng-disabled="mode=='update'">
+                             </div> 
                         </div>
                         <div class="row">
                             <div class="col-sm-12 MargingTop">
-                                <a href="#" class="btn btn-success">Salvar</a>
-                                <a href="#" class="btn btn-success">Editar</a>
+                                <a href="#" ng-show="mode=='update'" class="btn btn-success">Salvar</a>
+                                <a href="#" ng-click="edit(object);" class="btn btn-success">Editar</a>
                                 <a href="#" class="btn btn-success">Agregar</a>
                             </div>
                         </div>
@@ -85,7 +88,7 @@
             };
         
             $scope.edit = function (selected){
-                $scope.current = selected.clone();
+                $scope.current = selected;
                 $scope.mode='update';
             };
 
@@ -145,7 +148,7 @@
             };                    
 
     };
-        
+       
         function reset($scope){
             $scope.current = new Usuario("","","");
             $scope.mode=null;
