@@ -28,7 +28,7 @@
                 <div class="panel panel-success MargingTop">
                     <div class="panel-heading">Usuarios</div>
                     <div class="panel-body">
-                    <table id ="UsuariosTable" class="GRID"> 
+                    <table id ="UsuariosTable" class="table table-hover"> 
                         <thead><tr><th>Nombre</th><th>Categoria</th><th>Clave</th></tr></thead>
                         <tbody>
                             <tr ng-repeat="object in list" ng-class="{'selectedRow':$index == selectedRow}" ng-click="setClickedRow($index);edit(object);" >
