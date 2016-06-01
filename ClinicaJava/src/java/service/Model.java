@@ -34,8 +34,7 @@ public class Model {
        List<Usuario> users;
        users= new ArrayList();
         try {
-            String sql="select * "+
-                    "from usuario";
+            String sql="select * from usuario p  inner join usuario_categoria pc on pc.usuario = p.codigo inner join categoria c on pc.categoria = c.codigo";
             ResultSet rs =  usuarios.executeQuery(sql);
             while (rs.next()) {
                 users.add(toUsuario(rs));
@@ -194,6 +193,8 @@ public static  List<Compra> compraConsultarTodos() throws Exception{
         obj.setClave(rs.getString("clave"));
         obj.setCodigoCategoria(rs.getString("categoria"));
         obj.setDescripcionCategoria(rs.getString("descripcion"));
+        obj.setTelefono(rs.getString("telefono"));
+        obj.setCorreo(rs.getString("correo"));
         return obj;
     }
 /*

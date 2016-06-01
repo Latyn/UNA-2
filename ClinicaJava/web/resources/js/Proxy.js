@@ -51,7 +51,7 @@ Proxy.usuariosListSearch = function(criteria,callBack){
 
 Proxy.usuariosListAll = function(callBack){
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=ProductListAll";
+    url="/ClinicaJava/ControllerServlet?action=UsuarioListAll";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
