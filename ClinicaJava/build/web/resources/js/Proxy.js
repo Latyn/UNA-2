@@ -6,14 +6,13 @@ Proxy.usuariosDelete = function(product,callBack){
     url="/ClinicaJava/ControllerServlet?action=UsuarioDelete";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    var callBackConstructor= function(productParameter){ 
-            return function(){
-                if( AJAX_req.readyState === 4 && AJAX_req.status === 200 ){
-                    callBack(productParameter);
-                }            
-            };
-        };
-    AJAX_req.onreadystatechange = callBackConstructor(product);
+    AJAX_req.onreadystatechange = function(){
+        if( AJAX_req.readyState === 4 && AJAX_req.status === 200 ){
+            jsonText=AJAX_req.responseText;
+            var status = JSON.parse( jsonText,revive );
+            callBack(status);
+        }
+    };
     AJAX_req.send("product="+jsonText);   
 };
 

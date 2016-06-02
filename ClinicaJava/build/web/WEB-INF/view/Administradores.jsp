@@ -96,8 +96,9 @@
                             <div class="col-sm-12 MargingTop">
                                 <form name="userForm">
                                 <a href="#" ng-show="mode == 'update'" class="btn btn-success">Salvar</a>
-                                <a href="#" class="btn btn-success" ng-click="add();">Agregar</a>
+                                <a href="#" ng-show="mode == 'add'" class="btn btn-success" ng-click="add();">Agregar</a>
                                 <a href="#" class="btn btn-success" ng-click="delete();">Borrar</a>
+                                <a href="#" class="btn btn-success" ng-click="new();">+</a>
                                 </form>
                             </div>
                         </div>
@@ -146,7 +147,7 @@
                                             case 0: // ok
                                                 alert("Registro Agregado!");
                                                 $scope.$apply(function () {
-                                                    $scope.list = new Array($scope.current.clone());
+                                                    $scope.list = new Array($scope.current);
                                                     reset($scope);
                                                 });
                                                 break;
@@ -170,6 +171,7 @@
                                                 alert("Registro Modificado!");
                                                 $scope.$apply(function () {
                                                     $scope.list[$scope.selectedRow] = $scope.current.clone();
+                                                    reset($scope);
                                                 });
                                                 break;
                                             case 1: // no existe
@@ -189,6 +191,7 @@
                                                 $scope.$apply(function () {
                                                     $scope.list.splice($scope.selectedRow, 1);
                                                     reset($scope);
+                                                    new($scope);
                                                 });
                                                 break;
                                             case 1: // no existe
