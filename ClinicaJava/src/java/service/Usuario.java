@@ -93,6 +93,9 @@ public class Usuario implements Serializable, Jsonable {
         return codigo;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }

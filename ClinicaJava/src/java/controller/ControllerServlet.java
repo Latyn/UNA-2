@@ -67,6 +67,35 @@ public class ControllerServlet extends HttpServlet {
                     json = gson.toJson(usuarios); 
                     out.write(json);
                 break;
+                case "UsuarioAdd":
+                    json = request.getParameter("product");
+                    Usuario productoJava= gson.fromJson(json, Usuario.class);
+                    int updated = Model.UsuarioAdd(productoJava);
+                    if (productoJava.getCategoria()!=null && updated == 1) {
+                         updated = Model.UsuarioCategoriaAdd(productoJava.getCodigo(),productoJava.getCategoria());
+                    }
+                    
+                    if(updated==1){
+                        json = gson.toJson(0); // ok
+                    }
+                    else{
+                        json = gson.toJson(1); // ya existe
+                    }
+                    out.write(json);   
+                break;
+                case "UsuarioDelete":
+                    json = request.getParameter("product");
+                    Usuario usuarioJava= gson.fromJson(json, Usuario.class);
+                    int deleted = Model.UsuarioDelete(usuarioJava);
+                    
+                    if(deleted==1){
+                        json = gson.toJson(0); // ok
+                    }
+                    else{
+                        json = gson.toJson(1); // ya existe
+                    }
+                    out.write(json); 
+                break;
             }
         }
     }

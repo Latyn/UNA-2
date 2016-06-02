@@ -60,6 +60,39 @@ public class Model {
         }
        return users;
    }
+   
+     public static int UsuarioAdd(Usuario usuario) throws Exception{
+            String sql="insert into usuario "+
+                    "(codigo, nombre, clave, telefono, correo) "+
+                    "values ('%s','%s','%s','%s','%s')";
+            sql=String.format(sql,
+                    usuario.getCodigo(), 
+                    usuario.getNombre(), 
+                    usuario.getClave(),
+                    usuario.getTelefono(),
+                    usuario.getCorreo()
+                    );
+            
+            return usuarios.executeUpdate(sql);
+    }
+    public static int UsuarioCategoriaAdd(String codigo ,String categoria) throws Exception{
+            String sql="insert into usuario_categoria "+
+                    "(usuario, categoria) "+
+                    "values ('%s','%s')";
+            sql=String.format(sql,
+                    codigo,                    
+                    categoria
+                    );
+            return usuarios.executeUpdate(sql);
+    }
+    public static int UsuarioDelete(Usuario product) throws Exception{
+            String sql="delete from usuario "+
+                    "where codigo='%s'";
+            sql=String.format(sql,
+                    product.getCodigo());
+            return usuarios.executeUpdate(sql);
+    }
+        
    /*public static List<Producto> productListCategory(int category){
        List<Producto> prods;
        prods= new ArrayList();
@@ -95,18 +128,7 @@ public class Model {
             sql=String.format(sql,
                     product.getCodigo());
             return productos.executeUpdate(sql);
-    }   
-   
-   public static int ProductAdd(Producto product) throws Exception{
-            String sql="insert into Producto "+
-                    "(codigo, descripcion, precio) "+
-                    "values ('%s','%s',%s)";
-            sql=String.format(sql,
-                    product.getCodigo(),                    
-                    product.getDescripcion(),
-                    product.getPrecio());
-            return productos.executeUpdate(sql);
-    }
+    }  
    
    public static Usuario userLogin(Usuario usuario) throws Exception{
         try {
@@ -190,6 +212,7 @@ public static  List<Compra> compraConsultarTodos() throws Exception{
    private static Usuario toUsuario(ResultSet rs) throws Exception{
         Usuario obj= new Usuario();
         obj.setCodigo(rs.getString("codigo"));
+        obj.setNombre(rs.getString("nombre"));
         obj.setClave(rs.getString("clave"));
         obj.setCodigoCategoria(rs.getString("categoria"));
         obj.setDescripcionCategoria(rs.getString("descripcion"));

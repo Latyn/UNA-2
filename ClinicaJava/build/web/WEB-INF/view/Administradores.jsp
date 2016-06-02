@@ -31,6 +31,7 @@
                         <table id ="UsuariosTable" class="table table-hover"> 
                             <thead>
                                 <tr>
+                                    <th>Codigo</th>
                                     <th>Nombre</th>
                                     <th>Clave</th>
                                     <th>Categoria</th>
@@ -40,6 +41,7 @@
                             <tbody>
                                 <tr ng-repeat="object in list" ng-class="{'selectedRow':$index == selectedRow}" ng-click="setClickedRow($index);edit(object);" >
                                     <td>{{object.codigo}}</td>
+                                    <td>{{object.nombre}}</td>
                                     <td>{{object.clave}}</td>
                                     <td>{{object.descripcion}}</td>
                                     <td>{{object.telefono}}</td>
@@ -58,6 +60,12 @@
                             <div class="col-sm-12">
                                 <label> Codigo :</label>
                                 <input type="text" class="form-control" required ng-model="current.codigo" ng-disabled="mode == 'update'">
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label> Nombre :</label>
+                                <input type="text" class="form-control" required ng-model="current.nombre" ng-disabled="mode == 'update'">
                             </div> 
                         </div>
                         <div class="row">
@@ -86,8 +94,11 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 MargingTop">
+                                <form name="userForm">
                                 <a href="#" ng-show="mode == 'update'" class="btn btn-success">Salvar</a>
-                                <a href="#" class="btn btn-success">Agregar</a>
+                                <a href="#" class="btn btn-success" ng-click="add();">Agregar</a>
+                                <a href="#" class="btn btn-success" ng-click="delete();">Borrar</a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -103,6 +114,7 @@
                             $scope.selectedRow = index;
                         };
                         listar($scope);
+                        
                         $scope.search = function (e) {
                             Proxy.usuariosListSearch($scope.filter,
                                     function (result) {
@@ -127,9 +139,8 @@
                             if (!$scope.userForm.$valid) {
                                 alert("Error en Datos!");
                                 return;
-                            }
-                            ;
-                            Proxy.usuariosAdd()($scope.current,
+                            };
+                            Proxy.usuariosAdd($scope.current,
                                     function (status) {
                                         switch (status) {
                                             case 0: // ok
@@ -142,8 +153,7 @@
                                             case 1: // ya existe
                                                 alert("Registro Duplicado!");
                                                 break;
-                                        }
-                                        ;
+                                        };
                                     });
                         };
 
@@ -153,7 +163,7 @@
                                 return;
                             }
                             ;
-                            Proxy.usuariosUpdate()($scope.current,
+                            Proxy.usuariosUpdate($scope.current,
                                     function (status) {
                                         switch (status) {
                                             case 0: // ok
@@ -171,7 +181,7 @@
                         };
 
                         $scope.delete = function (e) {
-                            Proxy.usuariosDelete()($scope.current,
+                            Proxy.usuariosDelete($scope.current,
                                     function (status) {
                                         switch (status) {
                                             case 0: // ok

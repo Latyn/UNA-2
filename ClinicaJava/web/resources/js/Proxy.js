@@ -1,9 +1,9 @@
 var Proxy = Proxy || {};
 
-Proxy.UsuariosDelete = function(product,callBack){
+Proxy.usuariosDelete = function(product,callBack){
     jsonText = JSON.stringify(product,replacer);
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=productDelete";
+    url="/ClinicaJava/ControllerServlet?action=UsuarioDelete";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var callBackConstructor= function(productParameter){ 
@@ -80,26 +80,10 @@ Proxy.usuariosUpdate = function(product,callBack){
     AJAX_req.send("product="+jsonText);   
 };
 
-Proxy.usuariosDelete = function(product,callBack){
-    jsonText = JSON.stringify(product,replacer);
-    var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=ProductDelete";
-    AJAX_req.open( "POST", url, true );
-    AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    AJAX_req.onreadystatechange = function(){
-        if( AJAX_req.readyState === 4 && AJAX_req.status === 200 ){
-            jsonText=AJAX_req.responseText;
-            var status = JSON.parse( jsonText,revive );
-            callBack(status);
-        }
-    };
-    AJAX_req.send("product="+jsonText);   
-};
-
 Proxy.usuariosAdd = function(product,callBack){
     jsonText = JSON.stringify(product,replacer);
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=ProductAdd";
+    url="/ClinicaJava/ControllerServlet?action=UsuarioAdd";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){

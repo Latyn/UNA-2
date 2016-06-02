@@ -1,16 +1,18 @@
-  function Usuario(codigo,clave,categoria,descripcion,telefono,correo) {
-    this.Usuario(codigo,clave,categoria,descripcion,telefono,correo);
+  function Usuario(codigo,nombre,clave,categoria,descripcion,telefono,correo) {
+    this.Usuario(codigo,nombre,clave,categoria,descripcion,telefono,correo);
   }
   
   Usuario.prototype={
   	codigo: "",
+        nombre: "",
 	clave: "",
         categoria: "",
         descripcion: "",
         telefono: "",
         correo : "",
-	Usuario: function(codigo,clave,categoria, descripcion,telefono,correo ){
+	Usuario: function(codigo,nombre,clave,categoria, descripcion,telefono,correo ){
 		this.codigo=codigo;
+                this.nombre=nombre;
 		this.clave=clave;
                 this.categoria=categoria;
                 this.descripcion = descripcion;
@@ -22,8 +24,9 @@
 	}
   };
   
+  //Duda que hace el plain o la funcion from en este caso, para que se utiliza
   Usuario.from= function(plain){
-    usuario = new Usuario(plain.codigo,plain.clave,plain.categoria, plain.descripcion, plain.telefono, plain.correo);
+    usuario = new Usuario(plain.codigo,plain.nombre,plain.clave,plain.categoria, plain.descripcion, plain.telefono, plain.correo);
 	return usuario;
   };
   
@@ -31,6 +34,7 @@
     return {
         _class : 'Usuario',
         codigo : usuario.codigo,
+        nombre : usuario.nombre,
         clave : usuario.clave,
         categoria : usuario.categoria,
         descripcion : usuario.descripcion,
