@@ -66,7 +66,7 @@ Proxy.usuariosListAll = function(callBack){
 Proxy.usuariosUpdate = function(product,callBack){
     jsonText = JSON.stringify(product,replacer);
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=ProductUpdate";
+    url="/ClinicaJava/ControllerServlet?action=UsuarioUpdate";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){

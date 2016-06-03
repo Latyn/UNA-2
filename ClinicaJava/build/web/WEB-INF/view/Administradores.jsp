@@ -65,13 +65,13 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label> Nombre :</label>
-                                <input type="text" class="form-control" required ng-model="current.nombre" ng-disabled="mode == 'update'">
+                                <input type="text" class="form-control" required ng-model="current.nombre">
                             </div> 
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <label> Clave :</label>
-                                <input type="text" class="form-control" required ng-model="current.clave" ng-disabled="mode == 'update'">
+                                <input type="text" class="form-control" required ng-model="current.clave">
                             </div> 
                         </div>
                         <div class="row">
@@ -95,7 +95,7 @@
                         <div class="row">
                             <div class="col-sm-12 MargingTop">
                                 <form name="userForm">
-                                <a href="#" ng-show="mode == 'update'" class="btn btn-success">Salvar</a>
+                                <a href="#" ng-show="mode == 'update'" class="btn btn-success" ng-click="update();">Salvar</a>
                                 <a href="#" ng-show="mode == 'add'" class="btn btn-success" ng-click="add();">Agregar</a>
                                 <a href="#" class="btn btn-success" ng-click="delete();">Borrar</a>
                                 <a href="#" class="btn btn-success" ng-click="new();">+</a>

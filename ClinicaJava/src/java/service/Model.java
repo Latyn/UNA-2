@@ -92,7 +92,18 @@ public class Model {
                     product.getCodigo());
             return usuarios.executeUpdate(sql);
     }
-        
+    public static int UsuarioUpdate(Usuario usuario) throws Exception{
+            String sql="update usuario "+
+                    "set nombre='%s', clave='%s', telefono='%s', correo='%s' "+
+                    "where codigo='%s'";
+            sql=String.format(sql,
+                    usuario.getNombre(), 
+                    usuario.getClave(),
+                    usuario.getTelefono(),
+                    usuario.getCorreo(),
+                    usuario.getCodigo());
+            return usuarios.executeUpdate(sql);
+    }
    /*public static List<Producto> productListCategory(int category){
        List<Producto> prods;
        prods= new ArrayList();
