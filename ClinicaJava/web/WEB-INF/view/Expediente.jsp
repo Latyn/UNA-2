@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 MargingTop">
-                                        <a href="#" class="btn btn-success">Salvar</a>
+                                        <a href="#" class="btn btn-success" ng-show="mode == 'med'" >Salvar</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,19 +76,19 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label> Descripcion :</label>
-                                <input type="text" class="form-control" required ng-model="current.descripcion">
+                                <input type="text" class="form-control" required ng-model="current.descripcion" ng-disabled="mode == 'update'">
                             </div> 
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <label> Fecha :</label>
-                                <input type="text" class="form-control" required ng-model="current.fecha_hora">
+                                <input type="text" class="form-control" required ng-model="current.fecha_hora" ng-disabled="mode == 'update'">
                             </div> 
                         </div>
                                 <div class="row">
                                     <div class="col-sm-12 MargingTop">
-                                        <a href="#" class="btn btn-success">Salvar</a>
-                                        <a href="#" class="btn btn-success">Agregar</a>
+                                        <a href="#" class="btn btn-success" ng-show="mode == 'med'">Salvar</a>
+                                        <a href="#" class="btn btn-success" ng-show="mode == 'med'">Agregar</a>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,8 @@
                         $scope.setClickedRow = function (index) {
                             $scope.selectedRow = index;
                         };
-                        listar($scope);
+                        listar($scope);                       
+    
                         
                         $scope.search = function (e) {
                             ProxyCitas.citasListSearch($scope.filter,
@@ -115,6 +116,11 @@
                                         });
                                     });
                             reset($scope);
+                        };
+                        
+                        $scope.salir = function (e) {
+                            sessionStorage.clear();
+                            $scope.mode = 'log';
                         };
 
                         $scope.new = function (e) {

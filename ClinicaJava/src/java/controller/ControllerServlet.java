@@ -109,6 +109,19 @@ public class ControllerServlet extends HttpServlet {
                     }
                     out.write(json); 
                 break;
+                case "login":
+                    json = request.getParameter("product");
+                    Usuario loginUser= gson.fromJson(json, Usuario.class);
+                    loginUser = Model.Login(loginUser);
+                    
+                    if (loginUser.getCategoria() != "0"){
+                        request.getSession().setAttribute("user", loginUser);
+                    }
+                    json = gson.toJson(loginUser); 
+                    out.write(json);
+
+                    
+                break;
             }
         }
     }

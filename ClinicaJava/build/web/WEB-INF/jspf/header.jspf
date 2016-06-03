@@ -11,13 +11,16 @@
       <a class="navbar-brand" href="#">Proyecto 2</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/ClinicaJava/Login">Ingreso</a></li>
-      <li><a href="/ClinicaJava/Medicos">Medicos</a></li>
-      <li><a href="/ClinicaJava/Expediente">Expediente</a></li> 
-      <li><a href="/ClinicaJava/Administradores">Administradores</a></li> 
+      <li class="active"><a href="/ClinicaJava/Login" ng-show="mode == 'log'">Ingreso</a></li>
+      <li><a href="/ClinicaJava/Medicos" ng-show="mode == 'med'">Medicos</a></li>
+      <li><a href="/ClinicaJava/Expediente" ng-show="mode == 'exp'">Expediente</a></li> 
+      <li><a href="/ClinicaJava/Administradores" ng-show="mode == 'adm'">Administradores</a></li> 
+      <li><a href="/ClinicaJava/Login" ng-click="salir();" ng-hide="mode == 'log'">Salir</a></li> 
     </ul>
   </div>
 </nav>
+
 <script src="resources/js/jquery-1.12.4.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/angular.js"></script>
+

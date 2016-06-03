@@ -96,4 +96,18 @@ Proxy.usuariosAdd = function(product,callBack){
 };
 
 
-
+Proxy.login = function(product,callBack){
+    jsonText = JSON.stringify(product,replacer);
+    var AJAX_req = new XMLHttpRequest();
+    url="/ClinicaJava/ControllerServlet?action=login";
+    AJAX_req.open( "POST", url, true );
+    AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    AJAX_req.onreadystatechange = function(){
+        if( AJAX_req.readyState === 4 && AJAX_req.status === 200 ){
+            jsonText=AJAX_req.responseText;
+            var result = JSON.parse( jsonText,revive );
+            callBack(result);
+        }
+    };
+    AJAX_req.send("product="+jsonText);   
+};

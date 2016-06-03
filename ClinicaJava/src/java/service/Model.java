@@ -104,6 +104,25 @@ public class Model {
                     usuario.getCodigo());
             return usuarios.executeUpdate(sql);
     }
+    
+    public static Usuario Login(Usuario usuario) throws Exception{
+        try {
+
+            String sql="select * from "+
+                    "usuario p  inner join usuario_categoria pc on pc.usuario = p.codigo inner join categoria c on pc.categoria = c.codigo   "+
+                    "where p.correo = '%s' and p.clave='%s'";
+            sql=String.format(sql,
+                    usuario.getCorreo(),usuario.getClave());
+            
+            ResultSet rs =  usuarios.executeQuery(sql);
+            if (rs.first()) {
+                return toUsuario(rs);
+            }
+            
+        } catch (SQLException ex) {
+        }
+        return null;
+   }
    /*public static List<Producto> productListCategory(int category){
        List<Producto> prods;
        prods= new ArrayList();
