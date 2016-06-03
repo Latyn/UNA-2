@@ -34,7 +34,7 @@ public class CitaModel {
        List<Cita> lstCitas;
        lstCitas= new ArrayList();
         try {
-            String sql="select * from usuario p  inner join usuario_categoria pc on pc.usuario = p.codigo inner join categoria c on pc.categoria = c.codigo";
+            String sql="select * from cita p  inner join usuario_cita pc on pc.cita = p.codigo inner join usuario c on pc.usuario = c.codigo";
             ResultSet rs =  citas.executeQuery(sql);
             while (rs.next()) {
                 lstCitas.add(toCita(rs));

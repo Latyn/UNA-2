@@ -127,7 +127,7 @@
                         };
 
                         $scope.new = function (e) {
-                            $scope.current = new Usuario("", "", "", "");
+                            $scope.current = new Usuario("", "", "", "", "", "", "");
                             $scope.mode = 'add';
                         };
 
@@ -205,7 +205,7 @@
                     };
 
                     function reset($scope) {
-                        $scope.current = new Usuario("", "", "", "");
+                        $scope.current = new Usuario("", "", "", "", "", "", "");
                         $scope.mode = null;
                         $scope.selectedRow = null;
                     }

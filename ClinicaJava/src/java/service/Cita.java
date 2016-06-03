@@ -10,32 +10,20 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Latyn
  */
-@Entity
-@Table(name = "cita")
-@NamedQueries({
-    @NamedQuery(name = "Cita.findAll", query = "SELECT c FROM Cita c"),
-    @NamedQuery(name = "Cita.findByCodigo", query = "SELECT c FROM Cita c WHERE c.codigo = :codigo"),
-    @NamedQuery(name = "Cita.findByDescripcion", query = "SELECT c FROM Cita c WHERE c.descripcion = :descripcion"),
-    @NamedQuery(name = "Cita.findByFechaHora", query = "SELECT c FROM Cita c WHERE c.fechaHora = :fechaHora")})
-@XmlRootElement
-public class Cita implements Serializable {
+
+public class Cita implements Serializable, Jsonable {
 
     private static final long serialVersionUID = 1L;
     @Id

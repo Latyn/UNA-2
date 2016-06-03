@@ -19,6 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.Cita;
+import service.CitaModel;
 import service.Usuario;
 import service.Model;
 
@@ -47,23 +49,23 @@ public class CitasControllerServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/xml");
             RuntimeTypeAdapterFactory<Jsonable> rta = RuntimeTypeAdapterFactory.of(Jsonable.class,"_class")
-             .registerSubtype(Usuario.class,"Usuario");
+             .registerSubtype(Usuario.class,"Cita");
             Gson gson = new GsonBuilder().registerTypeAdapterFactory(rta).setDateFormat("dd/MM/yyyy").create();
             String json;
             String accion = request.getParameter("action");
-            List<Usuario> usuarios;
+            List<Cita> citas;
             
             switch (accion) {
                 case "CitaListAll":
-                    usuarios = Model.usuariosConsultarTodos();
-                    json = gson.toJson(usuarios); 
+                    citas = CitaModel.citasConsultarTodos();
+                    json = gson.toJson(citas); 
                     out.write(json);
                     break;
                 case "CitaListSearch":
                     String criteria;
                     criteria = request.getParameter("criteria");
-                    usuarios = Model.usuarioListSearch(criteria);
-                    json = gson.toJson(usuarios); 
+                    citas = CitaModel.citaListSearch(criteria);
+                    json = gson.toJson(citas); 
                     out.write(json);
                 break;
                 case "CitaAdd":

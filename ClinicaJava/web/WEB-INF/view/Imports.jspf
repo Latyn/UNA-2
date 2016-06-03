@@ -4,5 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript" src="resources/js/Usuario.js"></script>   
+<script type="text/javascript" src="resources/js/Cita.js"></script>  
 <script type="text/javascript" src="resources/js/Proxy.js"></script>
+<script type="text/javascript" src="resources/js/ProxyCitas.js"></script>
 <script type="text/javascript" src="resources/js/BaseDatos.js"></script>
