@@ -29,7 +29,7 @@ import service.Model;
 //se adicionan los urls de las vistas
 @WebServlet(name = "ControllerServlet",
             loadOnStartup = 1, 
-            urlPatterns = {"/ControllerServlet","/Medicos", "/Expediente","/Administradores","/ListarMedicos","/UsuarioListSearch","/UsuarioListAll"})
+            urlPatterns = {"/ControllerServlet","/Medicos", "/Expediente","/Administradores","/Login"})
 public class ControllerServlet extends HttpServlet {
 
     /**
