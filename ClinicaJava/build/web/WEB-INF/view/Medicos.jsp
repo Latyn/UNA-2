@@ -51,7 +51,8 @@
                             <div class="panel-heading">Detalles Expediente</div>
                             <div class="panel-body">
                                 <div class="col-sm-12">
-                                    Detalles
+                                        <label> Descripcion :</label>
+                                        <input type="text" class="form-control" rows="5" required ng-model="current.codigo" ng-disabled="mode == 'update'">
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 MargingTop">
