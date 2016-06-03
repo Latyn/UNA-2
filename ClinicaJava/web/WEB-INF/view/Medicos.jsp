@@ -52,7 +52,7 @@
                             <div class="panel-body">
                                 <div class="col-sm-12">
                                         <label> Descripcion :</label>
-                                        <input type="text" class="form-control" rows="5" required ng-model="current.codigo" ng-disabled="mode == 'update'">
+                                        <input type="text" class="form-control" rows="5" required ng-model="current.codigo">
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 MargingTop">
