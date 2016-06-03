@@ -135,6 +135,11 @@
                             $scope.current = selected;
                             $scope.mode = 'update';
                         };
+                        
+                        $scope.salir = function (e) {
+                            sessionStorage.clear();
+                            $scope.mode = 'log';
+                        };
 
                         $scope.add = function (e) {
                             if (!$scope.userForm.$valid) {
