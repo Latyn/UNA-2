@@ -49,7 +49,7 @@ public class CitasControllerServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             response.setContentType("text/xml");
             RuntimeTypeAdapterFactory<Jsonable> rta = RuntimeTypeAdapterFactory.of(Jsonable.class,"_class")
-             .registerSubtype(Usuario.class,"Cita");
+             .registerSubtype(Cita.class,"Cita");
             Gson gson = new GsonBuilder().registerTypeAdapterFactory(rta).setDateFormat("dd/MM/yyyy").create();
             String json;
             String accion = request.getParameter("action");
