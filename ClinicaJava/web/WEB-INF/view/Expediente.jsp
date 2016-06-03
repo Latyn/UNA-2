@@ -31,11 +31,13 @@
                                 <tr>
                                     <th>Codigo</th>
                                     <th>Descripcion</th>
+                                    <th>Fecha</th>
                                 </tr></thead>
                             <tbody>
                                 <tr ng-repeat="object in list" ng-class="{'selectedRow':$index == selectedRow}" ng-click="setClickedRow($index);edit(object);" >
                                     <td>{{object.codigo}}</td>
                                     <td>{{object.descripcion}}</td>
+                                    <td>{{object.fecha_hora}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -65,9 +67,24 @@
                         <div class="panel panel-danger">
                             <div class="panel-heading">Detalles de cita</div>
                             <div class="panel-body">
-                                <div class="col-sm-12">
-                                    Detalles
-                                </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label> Codigo :</label>
+                                <input type="text" class="form-control" required ng-model="current.codigo" ng-disabled="mode == 'update'">
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label> Descripcion :</label>
+                                <input type="text" class="form-control" required ng-model="current.descripcion">
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label> Fecha :</label>
+                                <input type="text" class="form-control" required ng-model="current.fecha_hora">
+                            </div> 
+                        </div>
                                 <div class="row">
                                     <div class="col-sm-12 MargingTop">
                                         <a href="#" class="btn btn-success">Salvar</a>

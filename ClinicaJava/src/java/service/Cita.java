@@ -39,7 +39,7 @@ public class Cita implements Serializable, Jsonable {
     private String descripcion;
     @Column(name = "fecha_hora")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaHora;
+    private Date fecha_hora;
     @ManyToMany(mappedBy = "citaCollection")
     private Collection<Usuario> usuarioCollection;
 
@@ -72,11 +72,11 @@ public class Cita implements Serializable, Jsonable {
     }
 
     public Date getFechaHora() {
-        return fechaHora;
+        return fecha_hora;
     }
 
     public void setFechaHora(Date fechaHora) {
-        this.fechaHora = fechaHora;
+        this.fecha_hora = fechaHora;
     }
 
     @XmlTransient

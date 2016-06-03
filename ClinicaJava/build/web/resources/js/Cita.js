@@ -1,13 +1,15 @@
-  function Cita(codigo,descripcion) {
-    this.Cita(codigo,descripcion);
+  function Cita(codigo,descripcion,fecha_hora) {
+    this.Cita(codigo,descripcion,fecha_hora);
   }
   
   Cita.prototype={
   	codigo: "",
         descripcion: "",
-	Cita: function(codigo,descripcion ){
+        fecha_hora: "",
+	Cita: function(codigo,descripcion,fecha_hora ){
 		this.codigo=codigo;
                 this.descripcion = descripcion;
+                this.fecha_hora = fecha_hora;
 
 	},
 	toString:function(){
@@ -17,15 +19,16 @@
   
   //Duda que hace el plain o la funcion from en este caso, para que se utiliza
   Cita.from= function(plain){
-    cita = new Cita(plain.codigo, plain.descripcion);
+    cita = new Cita(plain.codigo, plain.descripcion, plain.fecha_hora);
 	return cita;
   };
   
-    Cita.to= function(usuario){
+    Cita.to= function(cita){
     return {
         _class : 'Cita',
-        codigo : usuario.codigo,
-        descripcion : usuario.descripcion
+        codigo : cita.codigo,
+        descripcion : cita.descripcion,
+        fecha_hora : cita.fecha_hora
     };	
   };
 
