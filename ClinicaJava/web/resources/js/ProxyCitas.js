@@ -3,7 +3,7 @@ var ProxyCitas = ProxyCitas || {};
 ProxyCitas.citasDelete = function(product,callBack){
     jsonText = JSON.stringify(product,replacer);
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=CitaDelete";
+    url="/ClinicaJava/CitasControllerServlet?action=CitaDelete";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
@@ -19,7 +19,7 @@ ProxyCitas.citasDelete = function(product,callBack){
 ProxyCitas.citasListCategory = function(category,callBack){
     jsonText = category;
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=CitaListCategory";
+    url="/ClinicaJava/CitasControllerServlet?action=CitaListCategory";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
@@ -35,7 +35,7 @@ ProxyCitas.citasListCategory = function(category,callBack){
 ProxyCitas.citasListSearch = function(criteria,callBack){
     jsonText = criteria;
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=CitaListSearch";
+    url="/ClinicaJava/CitasControllerServlet?action=CitaListSearch";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
@@ -50,7 +50,7 @@ ProxyCitas.citasListSearch = function(criteria,callBack){
 
 ProxyCitas.citasListAll = function(callBack){
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=CitaListAll";
+    url="/ClinicaJava/CitasControllerServlet?action=CitaListAll";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
@@ -66,7 +66,7 @@ ProxyCitas.citasListAll = function(callBack){
 ProxyCitas.citasUpdate = function(product,callBack){
     jsonText = JSON.stringify(product,replacer);
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=CitaUpdate";
+    url="/ClinicaJava/CitasControllerServlet?action=CitaUpdate";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
@@ -82,7 +82,7 @@ ProxyCitas.citasUpdate = function(product,callBack){
 ProxyCitas.citasAdd = function(product,callBack){
     jsonText = JSON.stringify(product,replacer);
     var AJAX_req = new XMLHttpRequest();
-    url="/ClinicaJava/ControllerServlet?action=CitaAdd";
+    url="/ClinicaJava/CitasControllerServlet?action=CitaAdd";
     AJAX_req.open( "POST", url, true );
     AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     AJAX_req.onreadystatechange = function(){
